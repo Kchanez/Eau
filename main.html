@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Expérience Eau AR</title>
+
+  <!-- Model Viewer -->
+  <script type="module"
+    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      background: #e6f7ff;
+      font-family: Arial;
+      text-align: center;
+    }
+    model-viewer {
+      width: 100%;
+      height: 60vh;
+    }
+    .buttons {
+      margin: 10px;
+    }
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 10px;
+      border: none;
+      background: #0077b6;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Immersion – Eau augmentée</h2>
+
+<model-viewer 
+  id="viewer"
+  src="poisson.glb"
+  ar
+  ar-modes="scene-viewer quick-look webxr"
+  camera-controls
+  auto-rotate
+  shadow-intensity="1">
+</model-viewer>
+
+<div class="buttons">
+  <button onclick="changeModel('koi_fish.glb')">🐟 Poisson</button>
+  <button onclick="changeModel('looping_particles_dust_or_bubbles.glb')">🐋 Baleine</button>
+  <button onclick="changeModel('shiny_fish.glb')">🫧 Bulle</button>
+</div>
+
+<script>
+  function changeModel(model) {
+    document.getElementById('viewer').setAttribute('src', model);
+  }
+</script>
+
+</body>
+</html>
