@@ -1,2 +1,2 @@
 # Eau
-https://kchanez.github.io/main.html/
+https://kchanez.github.io/Eau/main.html/
