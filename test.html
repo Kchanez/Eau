@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Expérience Eau AR</title>
+
+  <!-- Model Viewer -->
+  <script type="module"
+    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      background: transparent;
+      font-family: Arial;
+      background-color: #0077b6;
+      text-align: center;
+    }
+    model-viewer {
+      width: 100%;
+      height: 60vh;
+      transition: transform 0.05s linear infinite;
+    }
+    .buttons {
+      margin: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    
+
+<model-viewer id="fish1" src="fish.glb" ar camera-controls  shadow-intensity="1" style="position:absolute; top:-5%; left:10%; width:20%; height:100%;"></model-viewer>
+
+<model-viewer id="fish2" src="fish1.glb" ar camera-controls  shadow-intensity="1" style="position:absolute; top:-25%; right:50%; width:15%; height:100%;"></model-viewer>
+
+<model-viewer id="fish3" src="fish3.glb" ar camera-controls style="position:absolute; top:-15%; right:5%; width:20%; height:100%;"></model-viewer>
+
+<model-viewer src="bubble.glb" ar camera-controls  shadow-intensity="0" style="position:absolute; bottom:50%; left:7%; width:20%; height:100%; transform: scale(6);">
+</model-viewer>
+
+<model-viewer src="bubble.glb" ar camera-controls  shadow-intensity="0" style="position:absolute; bottom: 50% ;right:7%; width:20%; height:100%; transform: scale(6);">
+</model-viewer>
+
+<model-viewer id="fish6" src="castlesable.glb" ar camera-controls  shadow-intensity="0" style="position:absolute; bottom:-15%; left:70%; width:30%; height:100%; z-index: 999;">
+</model-viewer>
+
+<model-viewer src="star.glb" ar camera-controls  shadow-intensity="0" style="position:absolute; bottom: -30% ;right:20%; width:11%; height:100%; z-index: 999;">
+</model-viewer>
+
+<model-viewer id="fish4" src="castlesable.glb" ar camera-controls  shadow-intensity="0" style="position:absolute; bottom:-15%; right:70%; width:30%; height:100%; z-index: 999;">
+</model-viewer>
+
+<model-viewer id="fish5" src="sable2.glb" ar camera-controls  shadow-intensity="0"   style="position:absolute; bottom:12%; left:50%; transform: translateX(-50%) scale3d(31, 15, 47); width:100%; height:100px;">
+</model-viewer>
+
+</model-viewer>
+
+<script>
+const fish1 = document.getElementById('fish1');
+const fish2 = document.getElementById('fish2');
+
+let x1 = 0, dir1 = 1;
+let x2 = 0, dir2 = 1;
+
+function animateFish() {
+  // Poisson 1
+  x1 += 0.006 * dir1;
+  if (x1 > 5 || x1 < -5) dir1 *= -1;
+  fish1.style.transform = `translateX(${x1*100}px) scaleX(${dir1})`;
+
+  // Poisson 2
+  x2 += 0.005 * dir2; // vitesse différente
+  if (x2 > 5 || x2 < -5) dir2 *= -1;
+  fish2.style.transform = `translateX(${x2*100}px) scaleX(${dir2})`;
+
+  requestAnimationFrame(animateFish);
+}
+
+animateFish();
+</script>
+
+
+</body>
+</html>
